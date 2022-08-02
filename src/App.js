@@ -1,22 +1,27 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./routes/Home.js";
-import Detail from "./routes/Detail.js";
+import styled from "styled-components";
+
+const Father = styled.div`
+  display: flex;
+`;
+
+const Box = styled.div`
+  background-color: ${(props) => props.bgColor};
+  width: 100px;
+  height: 100px;
+`;
+
+const Circle = styled(Box)`
+  border-radius: 50px;
+`;
 
 const App = () => {
+  console.log("test");
   return (
-    <Router>
-      <Switch>
-        <Route path="/about-us">
-          <h1>Hello</h1>
-        </Route>
-        <Route path="/movie/:id">
-          <Detail />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
+    <Father>
+      <Box bgColor="teal"></Box>
+      <Box bgColor="tomato"></Box>
+      <Circle bgColor="red"></Circle>
+    </Father>
   );
 };
 
