@@ -4,8 +4,8 @@ const App = () => {
   console.log("test");
   return (
     <div>
-      <Circle bgColor="teal" />
-      <Circle bgColor="tomato" />
+      <Circle bgColor="teal" borderColor="yellow" />
+      <Circle bgColor="tomato" text="check" />
     </div>
   );
 };
