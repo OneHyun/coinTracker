@@ -28,7 +28,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://OneHyun.github.io/onemovie",
+  "homepage": "https://OneHyun.github.io/cointrack",
   "dependencies": {
     "@tanstack/react-query": "^4.2.3",
     "@tanstack/react-query-devtools": "^4.2.3",
