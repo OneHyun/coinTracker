@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "https://onehyun.github.io/coinTracker/static/js/main.105d57f8.js",
-    "index.html": "https://onehyun.github.io/coinTracker/index.html",
-    "main.105d57f8.js.map": "https://onehyun.github.io/coinTracker/static/js/main.105d57f8.js.map"
+    "main.js": "/coinTracker/static/js/main.d6d29262.js",
+    "index.html": "/coinTracker/index.html",
+    "main.d6d29262.js.map": "/coinTracker/static/js/main.d6d29262.js.map"
   },
   "entrypoints": [
-    "static/js/main.105d57f8.js"
+    "static/js/main.d6d29262.js"
   ]
 }
