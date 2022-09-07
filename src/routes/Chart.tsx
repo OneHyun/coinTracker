@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useOutletContext } from "react-router-dom";
-import { fetchCoinHistory } from "./api";
+import { fetchCoinHistory } from "../api";
 import ApexChart from "react-apexcharts";
 import { useRecoilValue } from "recoil";
-import { isDarkAtom } from "./atoms";
+import { isDarkAtom } from "../atoms";
 
 interface IHistoryData {
   time_open: string;
@@ -65,22 +65,12 @@ const Chart = () => {
               },
               background: "transparent",
             },
-            grid: {
-              show: false,
-            },
-            yaxis: {
-              show: false,
-            },
+            grid: { show: false },
+            yaxis: { show: false },
             xaxis: {
-              labels: {
-                show: false,
-              },
-              axisTicks: {
-                show: false,
-              },
-              axisBorder: {
-                show: false,
-              },
+              axisBorder: { show: false },
+              axisTicks: { show: false },
+              labels: { show: false },
               type: "datetime",
             },
             plotOptions: {

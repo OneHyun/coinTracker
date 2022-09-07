@@ -6,6 +6,7 @@ import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
 import { isDarkAtom } from "../atoms";
+import { ThemeToggle } from "../components/ToggleTheme";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -60,39 +61,37 @@ interface ICoin {
 }
 
 const Coins = () => {
-  const setDarkAtom = useSetRecoilState(isDarkAtom);
-  const toggleDarkAtom = () => {
-    setDarkAtom((current) => !current);
-  };
   const { isLoading, data } = useQuery<ICoin[]>(["allCoins"], fetchCoins);
 
   console.log(data?.length);
   return (
-    <Container>
-      <Helmet>
-        <title>Coins</title>
-      </Helmet>
-      <Header>
-        <Title>코인</Title>
-        <button onClick={toggleDarkAtom}>Mode Change</button>
-      </Header>
-      {isLoading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <CoinsList>
-          {data?.slice(0, 100).map((coin) => (
-            <Coin key={coin.id}>
-              <Link to={`/${coin.id}`} state={coin}>
-                <Img
-                  src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
-                />
-                {coin.name} &rarr;
-              </Link>
-            </Coin>
-          ))}
-        </CoinsList>
-      )}
-    </Container>
+    <>
+      <ThemeToggle />
+      <Container>
+        <Helmet>
+          <title>Coins</title>
+        </Helmet>
+        <Header>
+          <Title>코인</Title>
+        </Header>
+        {isLoading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <CoinsList>
+            {data?.slice(0, 100).map((coin) => (
+              <Coin key={coin.id}>
+                <Link to={`/${coin.id}`} state={coin}>
+                  <Img
+                    src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
+                  />
+                  {coin.name} &rarr;
+                </Link>
+              </Coin>
+            ))}
+          </CoinsList>
+        )}
+      </Container>
+    </>
   );
 };
 
