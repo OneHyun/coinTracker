@@ -35,6 +35,12 @@ const Chart = () => {
       refetchInterval: 10000,
     }
   );
+
+  let validData = data ?? [];
+  if ("error" in validData) {
+    validData = [];
+  }
+
   return (
     <div>
       {isLoading ? (
@@ -45,7 +51,7 @@ const Chart = () => {
           series={[
             {
               name: "Price",
-              data: data?.map((price) => {
+              data: validData?.map((price) => {
                 return {
                   x: new Date(parseInt(price.time_open) * 1000),
                   y: [price.open, price.high, price.low, price.close],
@@ -54,6 +60,9 @@ const Chart = () => {
             },
           ]}
           options={{
+            noData: {
+              text: "차트 데이터가 없습니다.",
+            },
             theme: {
               mode: isDark ? "dark" : "light",
             },
