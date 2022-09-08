@@ -12,11 +12,18 @@ import {
 } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
-import { ThemeToggle } from "../components/ToggleTheme";
+import HomeBtn from "../components/HomeButton";
+import ThemeToggle from "../components/ToggleTheme";
+
+const HeaderContainer = styled.div`
+  display: flex;
+  margin-top: 10px;
+`;
 
 const Title = styled.h1`
   font-size: 48px;
   color: ${(props) => props.theme.accentColor};
+  text-shadow: 1px 1px 2px ${(props) => props.theme.accentColor};
 `;
 
 const Loader = styled.span`
@@ -69,7 +76,7 @@ const Tabs = styled.div`
 const Tab = styled.span<{ isActive: boolean }>`
   text-align: center;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 400;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 7px 0px;
@@ -113,7 +120,7 @@ interface InfoData {
   last_data_at: string;
 }
 
-interface PriceData {
+export interface PriceData {
   id: string;
   name: string;
   symbol: string;
@@ -171,7 +178,10 @@ const Coin = () => {
 
   return (
     <>
-      <ThemeToggle />
+      <HeaderContainer>
+        <HomeBtn />
+        <ThemeToggle />
+      </HeaderContainer>
       <Container>
         <Helmet>
           <title>
@@ -213,15 +223,15 @@ const Coin = () => {
               </OverviewItem>
             </Overview>
             <Tabs>
-              <Tab isActive={chartMatch !== null}>
-                <Link to={`/${coinId}/chart`}>Chart</Link>
-              </Tab>
               <Tab isActive={priceMatch !== null}>
-                <Link to={`/${coinId}/price`}>Price</Link>
+                <Link to={`/${coinId}/price`}>가격 변동</Link>
+              </Tab>
+              <Tab isActive={chartMatch !== null}>
+                <Link to={`/${coinId}/chart`}>차트 그래프</Link>
               </Tab>
             </Tabs>
 
-            <Outlet context={{ coinId }} />
+            <Outlet context={{ coinId, tickersData }} />
           </>
         )}
       </Container>

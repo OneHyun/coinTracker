@@ -76,26 +76,30 @@ const DarkModeEmoji = styled.div`
   color: yellow;
 `;
 
-export const ThemeToggle = () => {
+const ThemeToggle = () => {
   const setDarkAtom = useSetRecoilState(isDarkAtom);
   const toggleDarkAtom = () => {
     setDarkAtom((current) => !current);
   };
 
   return (
-    <ThemeBtnContainer>
-      <Emoji>
-        <LightModeEmoji>
-          <FontAwesomeIcon icon={faSun} />
-        </LightModeEmoji>
-      </Emoji>
-      <Input type="checkbox" onClick={toggleDarkAtom}></Input>
-      <ThemeBtn></ThemeBtn>
-      <Emoji>
-        <DarkModeEmoji>
-          <FontAwesomeIcon icon={faMoon} />
-        </DarkModeEmoji>
-      </Emoji>
-    </ThemeBtnContainer>
+    <>
+      <ThemeBtnContainer>
+        <Emoji>
+          <LightModeEmoji>
+            <FontAwesomeIcon icon={faSun} />
+          </LightModeEmoji>
+        </Emoji>
+        <Input type="checkbox" onClick={toggleDarkAtom}></Input>
+        <ThemeBtn></ThemeBtn>
+        <Emoji>
+          <DarkModeEmoji>
+            <FontAwesomeIcon icon={faMoon} />
+          </DarkModeEmoji>
+        </Emoji>
+      </ThemeBtnContainer>
+    </>
   );
 };
+
+export default ThemeToggle;

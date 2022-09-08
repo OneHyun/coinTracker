@@ -6,10 +6,16 @@ import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
 import { isDarkAtom } from "../atoms";
-import { ThemeToggle } from "../components/ToggleTheme";
+import HomeBtn from "../components/HomeButton";
+import ThemeToggle from "../components/ToggleTheme";
 
 const Container = styled.div`
   padding: 0px 20px;
+`;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  margin-top: 10px;
 `;
 
 const Header = styled.header`
@@ -66,7 +72,11 @@ const Coins = () => {
   console.log(data?.length);
   return (
     <>
-      <ThemeToggle />
+      <HeaderContainer>
+        <HomeBtn />
+        <ThemeToggle />
+      </HeaderContainer>
+
       <Container>
         <Helmet>
           <title>Coins</title>
@@ -80,7 +90,7 @@ const Coins = () => {
           <CoinsList>
             {data?.slice(0, 100).map((coin) => (
               <Coin key={coin.id}>
-                <Link to={`/${coin.id}`} state={coin}>
+                <Link to={`/${coin.id}/price`} state={coin}>
                   <Img
                     src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
                   />
