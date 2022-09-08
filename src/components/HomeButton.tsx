@@ -22,11 +22,11 @@ const ButtonContainer = styled.div`
 const HomeBtn = () => {
   return (
     <>
-      <ButtonContainer>
-        <Link to={`/`}>
+      <Link to={`/`}>
+        <ButtonContainer>
           <FontAwesomeIcon icon={faHouse} />
-        </Link>
-      </ButtonContainer>
+        </ButtonContainer>
+      </Link>
     </>
   );
 };
